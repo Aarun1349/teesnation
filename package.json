@@ -1,0 +1,23 @@
+{
+  "name": "teesnation",
+  "version": "1.0.0",
+  "description": "Ecommerce store using MERN stack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aarun1349/teesnation.git"
+  },
+  "author": "Arun Mahendra Sengar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Aarun1349/teesnation/issues"
+  },
+  "homepage": "https://github.com/Aarun1349/teesnation#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongoose": "^6.4.4"
+  }
+}
