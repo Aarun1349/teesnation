@@ -5,6 +5,8 @@ const userRoute = require('./routes/userRoutes')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
+
+
 //environment
 const DATABASE = process.env.DATABASE;
 const PORT =  process.env.PORT || 8000
@@ -16,15 +18,14 @@ const app = express();
 
 
 //route middleware
-app.use('/api',userRoute);
+app.use("/api/",userRoute);
 app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use(cookieParser())
 
 //db
 mongoose.connect(DATABASE,{
-    useNewUrlParser:true,
-    useCreateIndex:true
+    
 }).then(()=>console.log('Database Connected'))
 
 

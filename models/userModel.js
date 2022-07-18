@@ -1,11 +1,8 @@
-import { timeStamp } from "console";
-
 const mongoose = require("mongoose");
 const crypto = require("crypto");
-const uuidv1 = require("uuid/v1");
-const Schema = mongoose.Schema();
+const uuidv1 = require("uuid");
 
-const userSchema = new Schema(
+const userSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -13,16 +10,28 @@ const userSchema = new Schema(
       require: true,
       maxlength: 32,
     },
-    email: { type: String, trim: true, require: true, maxlength: 32 },
-    hashed_password: { type: String, require: true, maxlength: 32 },
-    date: { type: Date, default: new Date.now.toString() },
+    email: {
+      type: String,
+      trim: true,
+      require: true,
+      maxlength: 32,
+    },
+    hashed_password: {
+      type: String,
+      require: true,
+      maxlength: 32,
+    },
+    date: {
+      type: Date,
+      default: Date.now(),
+    },
     salt: String,
     role: {
       type: Number,
       default: 0,
     },
     history: {
-      lastLogin: date,
+      lastLogin:Date,
       purchase: {
         id: Number,
         date: Date,
@@ -48,7 +57,7 @@ const userSchema = new Schema(
 );
 
 // virtual fields
-userScheme
+userSchema
   .virtual("password")
   .set(function (password) {
     this._password = password;
@@ -59,8 +68,7 @@ userScheme
     return this._password;
   });
 
-
-// model methods  
+// model methods
 userSchema.methods = {
   encryptPassword: function (password) {
     if (!password) return "";
